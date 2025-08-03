@@ -4,7 +4,12 @@ framework:
 
     # Note that the session will be started ONLY if you read or write from it.
     session: true
-
+    http_client:
+        scoped_clients:
+            tmdb.client:
+                base_uri: 'https://api.themoviedb.org'
+                headers:
+                    Authorization: 'Bearer %env(TMDB_API_TOKEN)%'
     #esi: true
     #fragments: true
 

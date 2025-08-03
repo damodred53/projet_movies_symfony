@@ -1,10 +1,10 @@
-# Production environment override
 services:
   php:
     build:
       context: .
-      target: frankenphp_prod
+      target: frankenphp_prod  # 2 espaces d'indentation
+    env_file:
+      - .env.local  # Liste avec tiret
     environment:
-      APP_SECRET: ${APP_SECRET}
-      MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
-      MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
+      APP_SECRET: ${APP_SECRET:-}  # Fallback vide si non définie
+      # Autres variables si nécessaires
